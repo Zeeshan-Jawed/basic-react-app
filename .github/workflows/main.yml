@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Setup Node.js environment
-      uses: actions/setup-node@v1.4.2
+      uses: actions/setup-node@v2-beta
       with:
         version: 12
         
@@ -33,12 +33,12 @@ jobs:
         # Yarn command
         cmd: install #npm install / yarn install
       
-    - name: Creaet Build
-    - run: yarn build
+    - name: Create Build
+      run: yarn build
         
     # Install Surge
     - name: Installing Surge
-    - run: npm install -g surge
+      run: npm install -g surge
     
     - name: Deploying on  Surge
-    - run: surge ./build https://zeeshan-basic-react-app.surge.sh/ --token ${{secerts.SURGE_TOKEN}}
+      run: surge ./build https://zeeshan-basic-react-app.surge.sh/ --token ${{secerts.SURGE_TOKEN}}
